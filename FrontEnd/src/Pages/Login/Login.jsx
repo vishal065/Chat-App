@@ -47,6 +47,7 @@ function Login() {
             <button
               onClick={(e) => {
                 e.preventDefault();
+                if (!input) return;
                 startLogin(input);
               }}
               className="btn btn-block btn-sm mt-2"
