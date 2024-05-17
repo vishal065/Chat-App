@@ -6,7 +6,16 @@ function Login() {
     username: "",
     password: "",
   });
+  console.log(input);
   const { startLogin } = useLogin();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (!input.username === "" && !input.password === "") {
+      startLogin(input);
+    }
+
+    return;
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-w-[390px] xs:px-7  lg:px-0 xs:ml-0 ">
@@ -44,14 +53,7 @@ function Login() {
             {"Don't"} have an account?
           </Link>
           <div>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                if (!input) return;
-                startLogin(input);
-              }}
-              className="btn btn-block btn-sm mt-2"
-            >
+            <button onClick={handleLogin} className="btn btn-block btn-sm mt-2">
               Login
             </button>
           </div>
