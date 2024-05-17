@@ -16,7 +16,7 @@ export const SocketContextProvider = ({ children }) => {
   useEffect(() => {
     if (authUser) {
       // this data give you socket with socket id and other options also
-      const data = io("http://localhost:3000", {
+      const data = io("https://chat-app-dbtt.onrender.com/", {
         query: {
           //yeh wali id ja rhi h onlinerUserSocketmap k andar backend m socket.js
           userId: authUser._id,
