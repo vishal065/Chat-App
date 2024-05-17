@@ -15,7 +15,6 @@ function Message({ data }) {
   //   : selectedConversation?.ProfilePic;
   const bubbleBgColor = fromMe ? "bg-blue-500" : "";
   const formatTime = extractTime(data.createdAt);
-  console.log(authUser.gender);
   return (
     <div className={`chat   ${chatClass}`}>
       <div className="chat-image avatar ">
