@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../Hooks/useLogin";
+import toast from "react-hot-toast";
 function Login() {
   const [input, setInput] = useState({
     username: "",
     password: "",
   });
-  console.log(input);
   const { startLogin } = useLogin();
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!input.username === "" && !input.password === "") {
+    if (input.username !== "" && input.password !== "") {
       startLogin(input);
-    }
-
-    return;
+    } else toast.error("fileds cannot be blank ");
   };
 
   return (
