@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../Context/AuthContext";
-import toast from "react-hot-toast";
+
 export const useLogin = () => {
+  const navigate = useNavigate();
   const { setAuthUser } = useAuthContext();
   const startLogin = async ({ username, password }) => {
     try {
@@ -12,15 +14,20 @@ export const useLogin = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
+
       const data = await res.json();
-      if (!data) {
+      console.log("object", data);
+
+      if (!data || data.error) {
+        res.status(400).json({ error: data.error });
         throw new Error(data.error);
       }
+
       localStorage.setItem("LoggedInUser", JSON.stringify(data));
       setAuthUser(data);
     } catch (error) {
       console.log(error, " useLogin hook ka error");
-      toast.error(error);
+      navigate("/error");
     }
   };
 

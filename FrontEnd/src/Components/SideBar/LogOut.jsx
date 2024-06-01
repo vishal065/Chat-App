@@ -8,8 +8,9 @@ function LogOut() {
     <div className="mt-auto my-1">
       <BiLogOut
         onClick={logout}
-        className="w-6 h-6  text-white cursor-pointer text-sm"
-      />Logout
+        className="w-6 h-6 text-white cursor-pointer text-sm"
+      />
+      Logout
     </div>
   );
 }

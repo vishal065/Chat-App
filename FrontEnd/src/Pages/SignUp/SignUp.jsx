@@ -19,6 +19,7 @@ function SignUp() {
     e.preventDefault();
     await signupHook(input);
   };
+
   return (
     <div className="flex xs:ml-0 md:ml-0 flex-col items-center justify-center min-w-[380px]">
       <div className="xs:w-80 lg:w-[550px] p-6 rounded-lg shadow-md bg-gray-400  bg-clip-padding backdrop-filter backdrop-blur-lg  bg-opacity-0 ">
@@ -87,6 +88,7 @@ function SignUp() {
             Already have an account?
           </Link>
           <div>
+  
             <button className="btn btn-block btn-sm mt-2 border border-slate-700">
               {loading ? (
                 <span className="loading loading-spinner"></span>

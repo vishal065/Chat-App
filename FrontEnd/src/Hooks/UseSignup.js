@@ -21,7 +21,10 @@ export const UseSignup = () => {
       confirmpassword,
       gender,
     });
-    if (!success) return;
+    if (!success) {
+      setLoading(false);
+      return;
+    }
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -36,7 +39,6 @@ export const UseSignup = () => {
       });
 
       const data = await res.json();
-
       if (data.error) {
         throw new Error(data.error);
       }
