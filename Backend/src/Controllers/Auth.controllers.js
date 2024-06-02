@@ -47,11 +47,11 @@ export const signup = async (req, res) => {
         profilePic: newUser.profilepic,
       });
     } else {
-      res.status(400).json({ error: "Invalid user data" });
+      return res.status(400).json({ error: "Invalid user data" });
     }
   } catch (error) {
     console.log("error in auth controllers");
-    res.status(500).json({
+    return res.status(500).json({
       error: "internal server error",
     });
   }
@@ -62,16 +62,16 @@ export const login = async (req, res) => {
     const { username, password } = req.body;
     console.log(username, password);
     if (!username && !password) {
-      res.status(400).json({ error: "username or password required" });
+      return res.status(400).json({ error: "username or password required" });
     }
     const user = await User.findOne({ username });
     if (!user) {
-      res.status(400).json({ error: "User do not exist Please signup" });
+      return res.status(400).json({ error: "User do not exist Please signup" });
     }
     const pass = user.password;
-    const checkpass = await bcrypt.compare(password, pass);
+    const checkpass = bcrypt.compare(password, pass);
     if (!checkpass) {
-      res.status(400).json({ error: "Wrong password" });
+      return res.status(400).json({ error: "Wrong password" });
     }
 
     GenerateToken(user._id, res);
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     console.log("error in Authcontrol login catch trigger");
-    res.status(400).json({ error: "internal server error" });
+    return res.status(400).json({ error: "internal server error" });
   }
 };
 

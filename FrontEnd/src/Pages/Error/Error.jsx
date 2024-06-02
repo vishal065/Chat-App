@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 function Error() {
-    toast.error("Error while fetching user");
+  toast.error("Error while fetching user");
 
   return (
     <div className="flex flex-col items-center justify-center m-32 p-10 text-xl font-bold gap-5">
